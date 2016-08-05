@@ -4,5 +4,5 @@ From this directory run ./Bash/Provision/installScript.sh
 
 ```sh
 cd ./Bash/Provision/
-sudo ./installScript.sh
+sudo ./installscripts.sh
 ```
