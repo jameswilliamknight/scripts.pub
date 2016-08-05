@@ -1,0 +1,2 @@
+# scripts.pub
+public scripts
