@@ -2,9 +2,11 @@
 
 Setting up Ubuntu from scratch on hardware.
 
+
 ## Introduction
 
 I have recently freed up my personal laptop and have the chance to use it as a Linux daily driver (mostly for home use).
+
 
 ## Documentation Checklist / TODO / Meta
 
@@ -17,13 +19,14 @@ These notes are to improve the document itself.
         - surrounded by the bare minimum documentation
         - bare minimum of dependencies
         - may bootstrap higher level scripting languages, e.g. Python.
-1. Host this documentation and relevant (cleansed) scripts on my website.
-    - move relevant files to `github.com:jameswilliamknight/Scripts.pub.git`
+1. Link to this documentation from my [personal website](www.jknightdev.com).
+
 
 ## Script Run Order
 
-- `Scripts/Bash/provision/ubuntu/bootstrapper.sh` - run from a fresh ubuntu install
-- `Scripts/Bash/provision/ubuntu/installer.sh` - installer for third party software and personal configurations
+- `Scripts.pub/Bash/provision/ubuntu/bootstrapper.sh` - run from a fresh ubuntu install
+- `Scripts/Bash/provision/ubuntu/installer.sh` - installer for third party software and personal configurations (not yet included in scripts.pub.git)
+
 
 ## Raw log of events
 
@@ -35,3 +38,4 @@ These notes are to improve the document itself.
     1. Encrypted home directory
     1. Did not install updates and 3rd party software
 1. Started writing this documentation once I didn't know which of my scripts to use.
+1. Moved documentation to public scripts repository on github.
