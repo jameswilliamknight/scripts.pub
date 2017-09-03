@@ -10,14 +10,18 @@
 #     the public key to clipboard (middle mouse/ wheel click)
 #
 #   TODO: Display on jknightdev.com alongside start.md
+#   TODO: Elevate first.
+#   TODO: getKeyname in 'add-github-pubkey.sh' should use githubMachineName
 #
 # ==========================================================
 
 # Get some common details
 
-echo "Have your public access token from github ready in the clipboard."
-
-read -p "I'm ready! (press any key)"
+# TODO: validate token for sanity. (what encoding is it, base64?)
+# Personal Access Tokens should take the form:
+#   a872453ffcef867301439c88792fd0878b4cd098
+echo "Enter a new admin:public_key personal access token:"
+read token
 
 echo "Enter your email address:"
 read email
@@ -33,4 +37,4 @@ read githubMachineName
 echo "You have entered: $email@$githubMachineName continuing install..."
 
 ../xclip-git-ssh-keys.sh "$email" "$githubMachineName"
-../add-github-pubkey.sh -u "$username"
+../add-github-pubkey.sh -u "$username" -t "$token"
