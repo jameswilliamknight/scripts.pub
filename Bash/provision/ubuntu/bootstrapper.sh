@@ -23,8 +23,8 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh
 
-if [ ! -f "param.sh" ]; then
-    logthis "missing: param.sh"
+if [ ! -f "params.sh" ]; then
+    logthis "missing: params.sh"
     return 1;
 fi
 . params.sh ; loadbootstrapperparams "$@"
