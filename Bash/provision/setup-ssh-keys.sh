@@ -18,9 +18,19 @@ fi
 
 email=$1
 githubMachineName=$2
+passphrase=$3
 
 # Creating RSA Key Pair
-ssh-keygen -t rsa -b 4096 -C "$email" -f "${HOME}/.ssh/id_rsa"
+set -x
+XYZ=$(expect -c "
+spawn ssh-keygen -t rsa -b 4096 -C \"$email\" -f \"${HOME}/.ssh/id_rsa\"
+expect \"Enter passphrase (empty for no passphrase):\"
+send \"${passphrase}\r\"
+expect \"Enter same passphrase again:\"
+send \"${passphrase}\r\"
+")
+
+ssh-keygen -t rsa -b 4096 -C "$email" -f "${HOME}/.ssh/id_rsa" # -P "${passphrase}"
 # Enter file in which to save the key (/home/james/.ssh/id_rsa)
 #input-key:<Enter>
 #input-passphrase:<Random Gunk, saved somewhere else>

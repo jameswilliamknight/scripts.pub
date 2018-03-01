@@ -32,9 +32,12 @@ read username
 echo "Enter a name for this machine on github:"
 read githubMachineName
 
-echo "You have entered: $email@$githubMachineName continuing install..."
+echo "Enter a passphrase for your ssh private key:"
+read passphrase
+
+echo "You have entered: ${email}@${githubMachineName} continuing install..."
 
 . git.sh
 . curl.sh
-. setup-ssh-keys.sh "$email" "$githubMachineName"
-. add-github-pubkey.sh -u "$username" -t "$token"
+. setup-ssh-keys.sh "${email}" "${githubMachineName}" "${passphrase}"
+. add-github-pubkey.sh -u "${username}" -t "${token}"
