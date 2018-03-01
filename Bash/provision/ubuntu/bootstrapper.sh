@@ -15,6 +15,13 @@
 # ==========================================================
 
 . params.sh ; loadbootstrapperparams "$@"
+echo global_token
+echo "global_email = $global_email"
+echo "global_pcname = $global_pcname"
+echo "global_githubusername = $global_githubusername"
+echo "global_githubpassword = $global_githubpassword"
+echo "global_passphrase = $global_passphrase"
+
 
 return; # TESTING loadbootstrapperparams
 # Get some common details
