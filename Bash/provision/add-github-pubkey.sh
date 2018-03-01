@@ -42,7 +42,7 @@ keyname="${machinename}"
 token="${githubtoken}"
 sshkeypath="${HOME}/.ssh/id_rsa.pub"
 logthisfile "${sshkeypath}"
-data='{"title":"'$keyname'","key":"'`cat ${sshkeypath}`'"}';
+data='{"title":"'$keyname'","key":"'`cat \"${sshkeypath}\"`'"}';
 
 logthis "Uploading private key to ${githubusername}@github: ${data}"
 

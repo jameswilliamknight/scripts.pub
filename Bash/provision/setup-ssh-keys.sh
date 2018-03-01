@@ -62,17 +62,6 @@ else
     exit 1
 fi
 
-# get the screen to logthis locations of saved private and public keys etc.
-
-logthis "\n==========provision=============\n\n"
-logthis "The key pair are located at:\n\n"
-logthis "    " ~/.ssh/id_rsa
-logthis "    " ~/.ssh/id_rsa.pub
-logthis "\nPlease upload these to your github account"
-logthis "\nsee: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/"
-logthis "\nThe public key has been copied to the ('Mouse 3' / 'Mouse Wheel Down') clipboard!\n"
-logthis "\n================================\n\n"
-
 git config --global user.email "$email"
 git config --global user.name "$githubMachineName"
 git config --global push.default simple
