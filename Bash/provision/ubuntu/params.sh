@@ -21,7 +21,7 @@ function loadbootstrapperparams () {
             key2="global_${key//-/}"
             logthis "{ \"$key2\": \"$value\" }"
             magic=$(echo "${key2}=\"${value}\"")
-            logthis "MAGIC: ${magic}"
+            #logthis "MAGIC: ${magic}"
             eval ${magic}
         else
             logthis "invalid flag format: '$key'"
