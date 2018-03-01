@@ -3,22 +3,11 @@
 Setting up Ubuntu from scratch on hardware.
 
 ```sh
-#!/bin/bash
-
-cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
-# ${HOME}/src/_provision
-provisionpuburl="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
-wget "${provisionpuburl}/ubuntu/github-bootstrap.sh"
-wget "${provisionpuburl}/add-github-pubkey.sh"
-# chmod +x github-bootstrap.sh ; chmod +x add-github-pubkey.sh
-mkdir ubuntu ; cd ubuntu
-# ${HOME}/src/_provision/ubuntu
-wget "${provisionpuburl}/ubuntu/bootstrapper.sh"
-wget "${provisionpuburl}/ubuntu/start.md"
-chmod +x bootstrapper.sh
-#
-# TODO: Test. Also, don't run dodgy scripts you've found on the internet, you imbecile.
-. bootstrapper.sh
+# Warning: running random commands you find lying around,
+#          on the internet without understanding them can
+#          be a highly dangerous proposition indeed.
+#          Also, it's not tested yet ✌️
+wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
 
 
