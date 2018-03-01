@@ -6,7 +6,7 @@ cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
 # ${HOME}/src/_provision
 urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
 
-wget "${urlbase}/ubuntu/github-bootstrap.sh"
+wget "${urlbase}/github-bootstrap.sh"
 chmod +x github-bootstrap.sh
 
 wget "${urlbase}/ubuntu/params.sh"
