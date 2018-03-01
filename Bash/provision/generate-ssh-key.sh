@@ -12,16 +12,16 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\generate-ssh-key.sh"
 
-P="expect"
-for P; do
-    dpkg -s "$P" >/dev/null 2>&1 && {
-        logthis "$P is installed."
-        #exit 0;
-    } || {
-        logthis "$P is not installed. exiting."
-        exit 1;
-    }
-done
+# P="expect"
+# for P; do
+#     dpkg -s "$P" >/dev/null 2>&1 && {
+#         logthis "$P is installed."
+#         #exit 0;
+#     } || {
+#         logthis "$P is not installed. exiting."
+#         exit 1;
+#     }
+# done
 
 email=$1
 passphrase=$2
