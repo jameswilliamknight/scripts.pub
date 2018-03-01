@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# TODO: clone the whole repo.
 
 cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
 # ${HOME}/src/_provision
@@ -15,6 +17,9 @@ chmod +x bootstrapper.sh
 
 wget "${urlbase}/xclip-git-ssh-keys.sh"
 chmod +x xclip-git-ssh-keys.sh
+
+wget "${urlbase}/curl.sh"
+chmod +x curl.sh
 
 wget "${urlbase}/ubuntu/start.md"
 
