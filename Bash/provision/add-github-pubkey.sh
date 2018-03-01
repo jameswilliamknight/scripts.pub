@@ -19,11 +19,14 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\add-github-pubkey.sh"
 
-if [[ $(($#%2)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-    logthis "Usage: $0 -u \"username\" -t \"github-token\""
+if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
+    logthis "Usage: $0 \"machine-name\"  \"username\" \"github-token\""
     sleep 60
     return 1
 fi
+machinename="${1}"
+githubusername="${2}"
+githubtoken="${3}"
 #
 # Preparation
 #
@@ -33,74 +36,10 @@ fi
 #   1. Delete old token(s)
 #   2. > "Generate new token": add a description and check "write:public_key"
 
+keyname="${machinename}"
+token="${githubtoken}"
+data='{"title":"'$keyname'","key":"'`cat "${HOME}/.ssh/id_rsa.pub"`'"}';
 
-# TODO: check id_rsa.pub exists and exit if it doesn't.
+logthis "Uploading private key to ${githubusername}@github: ${data}"
 
-
-function getInput () {
-  varName=$1
-  varDesc=$2
-
-  if [[ -v $varName ]]; then
-    logthis "$varName is already set!"
-    return
-  fi
-
-  if [ "$#" == "2" ]; then
-    # prompt user
-    logthis -n "Enter $varDesc:"
-    read $varName
-  elif [ "$#" == "3" ]; then
-    username="$3"
-  else
-    logthis "error getting $varDesc"
-    exit 1
-  fi
-}
-
-function getUsername () {
-  getInput "username" "github username" $1
-}
-
-function getToken () {
-  getInput "token" "github access token" $1
-}
-
-function getKeyname () {
-  getInput "keyname" "public key name" $1
-}
-
-function processkvp () {
-  if [[ $key =~ ^-[a-zA-Z]$ ]]; then
-    #logthis "{ \"$key\": \"$value\" }"
-    if [[ "$key" =~ ^-[uU]$ ]]; then
-      username=$value
-    elif [[ $key =~ ^-[tT]$ ]]; then
-      token=$value
-    elif [[ $key =~ ^-[kK]$ ]]; then
-      keyname=$value
-    else
-      logthis "invalid flag: $key"
-      exit 1;
-    fi
-  else
-    logthis "invalid flag format: '$key'"
-    exit 1
-  fi
-}
-
-while (( "$#" )); do
-
-  key=$1
-  value=$2
-  processkvp
-  shift 2
-
-done
-
-getUsername
-getToken
-getKeyname
-data='{"title":"'$keyname'","key":"'`cat ~/.ssh/id_rsa.pub`'"}';
-logthis "Uploading private key to ${username}@github: ${data}"
-curl -v -H "Authorization: token $token" -u "$username" --data "$data" https://api.github.com/user/keys
+curl -v -H "Authorization: token $token" -u "$githubusername" --data "$data" https://api.github.com/user/keys

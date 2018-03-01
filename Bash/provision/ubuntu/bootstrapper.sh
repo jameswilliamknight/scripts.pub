@@ -87,7 +87,7 @@ fi
 . git.sh
 . curl.sh
 . setup-ssh-keys.sh "${global_email}" "${global_pcname}" "${global_passphrase}"
-. add-github-pubkey.sh -u "${global_githubusername}" -t "${global_token}"
+. add-github-pubkey.sh "${global_pcname}" "${global_githubusername}" "${global_token}" -k 
 
 logthis "finished - bootstrapper.sh"
 return 0;
