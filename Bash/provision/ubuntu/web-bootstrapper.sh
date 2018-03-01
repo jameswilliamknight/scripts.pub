@@ -17,6 +17,7 @@ function downloader () {
 }
 
 downloader "logger.sh"
+downloader "generate-ssh-key.sh"
 downloader "github-bootstrap.sh"
 downloader "ubuntu/params.sh"
 downloader "add-github-pubkey.sh"
