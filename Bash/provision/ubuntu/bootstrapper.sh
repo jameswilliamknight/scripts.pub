@@ -37,40 +37,30 @@ fi
 if [ -z ${global_token+x} ]; then
     logthis "Enter a new admin:public_key personal access token:"
     read global_token
-#else
-    #logthis "global_token is set to '${global_token}'";
 fi
 
 # email
 if [ -z ${global_email+x} ]; then
     logthis "Enter your git config email address:"
     read global_email
-#else
-    #logthis "global_email is set to '${global_email}'";
 fi
 
 # pc name
 if [ -z ${global_pcname+x} ]; then
     logthis "Enter a name for this machine on github:"
     read global_pcname
-#else
-    #logthis "global_pcname is set to '${global_pcname}'";
 fi
 
 # github username
 if [ -z ${global_githubusername+x} ]; then
     logthis "Enter your github username:"
     read global_githubusername
-#else
-    #logthis "global_ is set to '${global_githubusername}'";
 fi
 
 # github password
 if [ -z ${global_githubpassword+x} ]; then
     logthis "Enter your github password:"
     read -s global_githubpassword
-#else
-    #logthis "global_githubpassword is set to '${global_githubpassword}'";
 fi
 
 # passphrase
@@ -87,7 +77,7 @@ fi
 . git.sh
 . curl.sh
 . setup-ssh-keys.sh "${global_email}" "${global_pcname}" "${global_passphrase}"
-. add-github-pubkey.sh "${global_pcname}" "${global_githubusername}" "${global_token}"
+. add-github-pubkey.sh "${global_pcname}" "${global_githubusername}" "${global_token}" "${global_githubpassword}"
 
 logthis "finished - bootstrapper.sh"
 return 0;

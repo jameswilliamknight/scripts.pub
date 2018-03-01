@@ -19,7 +19,7 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\add-github-pubkey.sh"
 
-if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
+if [[ $(($#%4)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
     logthis "Usage: $0 \"machine-name\"  \"username\" \"github-token\""
 		logthis "actual: 0='$0' 1='$1' 2='$2' 3='$3' 4='$4' 5='$5' 6='$6'"
     sleep 5
@@ -28,6 +28,7 @@ fi
 machinename="${1}"
 githubusername="${2}"
 githubtoken="${3}"
+githubpassword="${4}"
 #
 # Preparation
 #
@@ -39,7 +40,9 @@ githubtoken="${3}"
 
 keyname="${machinename}"
 token="${githubtoken}"
-data='{"title":"'$keyname'","key":"'`cat "${HOME}/.ssh/id_rsa.pub"`'"}';
+sshkeypath="${HOME}/.ssh/id_rsa.pub"
+logthisfile "${sshkeypath}"
+data='{"title":"'$keyname'","key":"'`cat `'"}';
 
 logthis "Uploading private key to ${githubusername}@github: ${data}"
 
