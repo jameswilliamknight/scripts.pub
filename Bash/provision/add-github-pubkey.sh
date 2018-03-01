@@ -41,6 +41,10 @@ githubpassword="${4}"
 keyname="${machinename}"
 token="${githubtoken}"
 sshkeypath="${HOME}/.ssh/id_rsa.pub"
+if [ ! -f "${sshkeypath}" ]; then
+	  logthis "ERROR: sshkeypath='${sshkeypath}' does not exist!"
+    return 1;
+fi
 logthis "sshkeypath='${sshkeypath}'"
 logthisfile "${sshkeypath}"
 data='{"title":"'$keyname'","key":"'`cat \"${sshkeypath}\"`'"}';
