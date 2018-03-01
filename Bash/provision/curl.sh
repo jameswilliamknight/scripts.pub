@@ -13,7 +13,7 @@ if [ ! -f "logger.sh" ]; then
     echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh ; me=$(basename "$0"); loggerstarted "${me}"
+. logger.sh ; loggerstarted "scripts.pub\Bash\provision\curl.sh"
 
 logthis "installing curl..."
 sudo apt-get -qq install curl -y

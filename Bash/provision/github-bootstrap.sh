@@ -24,7 +24,7 @@ if [ ! -f "logger.sh" ]; then
     echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh ; me=$(basename "$0"); loggerstarted "${me}"
+. logger.sh ; loggerstarted "scripts.pub\Bash\provision\github-bootstrap.sh"
 
 if [[ ! $(($#)) = 2 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
 	echo "Usage: $0 \"email@address.com\" \"your-computers-name\""
