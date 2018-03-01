@@ -76,6 +76,7 @@ fi
 
 . git.sh
 . curl.sh
+. snap-expect.sh
 . setup-ssh-keys.sh "${global_email}" "${global_pcname}" "${global_passphrase}"
 . add-github-pubkey.sh "${global_pcname}" "${global_githubusername}" "${global_token}" "${global_githubpassword}"
 
