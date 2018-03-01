@@ -47,7 +47,7 @@ if [ ! -f "${sshkeypath}" ]; then
 fi
 logthis "sshkeypath='${sshkeypath}'"
 logthisfile "${sshkeypath}"
-data='{"title":"'$keyname'","key":"'`cat \"${sshkeypath}\"`'"}';
+data='{"title":"'$keyname'","key":"'`cat "${sshkeypath}"`'"}';
 
 logthis "Uploading private key to ${githubusername}@github: ${data}"
 
