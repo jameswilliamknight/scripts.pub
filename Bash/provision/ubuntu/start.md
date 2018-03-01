@@ -12,6 +12,10 @@ Setting up Ubuntu from scratch on hardware.
 wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
 
+**Known Bugs:**
+
+- you need to manually enter the name of the key. this should reuse the machine name provided.
+
 
 ## Introduction
 
