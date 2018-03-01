@@ -20,7 +20,7 @@ email=$1
 githubMachineName=$2
 
 # Creating RSA Key Pair
-ssh-keygen -t rsa -b 4096 -C "$email"
+ssh-keygen -t rsa -b 4096 -C "$email" -f "${HOME}/.ssh/id_rsa"
 # Enter file in which to save the key (/home/james/.ssh/id_rsa)
 #input-key:<Enter>
 #input-passphrase:<Random Gunk, saved somewhere else>
