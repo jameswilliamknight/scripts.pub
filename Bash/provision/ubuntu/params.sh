@@ -23,7 +23,7 @@ function loadbootstrapperparams () {
     function processkvp () {
         if [[ $key =~ $keyRegex ]]; then
             key2="global_${key//-/}"
-            logthis "{ \"$key2\": \"$value\" }"
+            #logthis "{ \"$key2\": \"$value\" }"
             magic=$(echo "${key2}=\"${value}\"")
             #logthis "MAGIC: ${magic}"
             eval ${magic}

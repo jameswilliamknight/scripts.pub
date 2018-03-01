@@ -15,5 +15,5 @@ function logthisprintf (){
 
 function loggerstarted () {
     me=`basename "$0"`
-    echo "logger started for ${me}"
+    logthis "logger started for ${me}"
 }

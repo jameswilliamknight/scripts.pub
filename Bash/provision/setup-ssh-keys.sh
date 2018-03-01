@@ -17,7 +17,7 @@ if [ ! -f "logger.sh" ]; then
     logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh
+. logger.sh ; loggerstarted
 
 if [[ $(($#%2)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
 	logthis "Usage: $0 \"email-address\" \"github-machine-name\""
