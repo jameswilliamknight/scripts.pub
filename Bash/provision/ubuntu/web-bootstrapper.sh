@@ -22,7 +22,7 @@ wget -q "${urlbase}/ubuntu/bootstrapper.sh" --no-cache
 chmod +x bootstrapper.sh
 
 wget -q "${urlbase}/setup-ssh-keys.sh" --no-cache
-chmod +x xclip-git-ssh-keys.sh
+chmod +x setup-ssh-keys.sh
 
 wget -q "${urlbase}/git.sh" --no-cache
 chmod +x git.sh
