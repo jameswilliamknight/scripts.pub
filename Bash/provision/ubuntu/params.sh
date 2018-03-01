@@ -3,20 +3,25 @@
 # Summary
 #   processes all params setting global variable. must be in function.
 
+function logthis (){
+    echo "${1}"
+    echo "${1}" >> "${HOME}/bootstrap.params.log"
+}
+
 function loadbootstrapperparams () {
     USAGE="Usage: $0 -k \"first key+value\" -k \"second key+value\""
     if [ "$#" == "0" ]; then
-    	  echo "$USAGE"
-    	  exit 1
+    	  logthis "$USAGE"
+    	  return 1;
     fi
 
     keyRegex="^--[a-zA-Z]{2,}}$";
     function processkvp () {
         if [[ $key =~ $keyRegex ]]; then
-            echo "{ \"$key\": \"$value\" }"
+            logthis "{ \"$key\": \"$value\" }"
         else
-            echo "invalid flag format: '$key'"
-            exit 1
+            logthis "invalid flag format: '$key'"
+            return 1;
         fi
     }
 
@@ -24,6 +29,11 @@ function loadbootstrapperparams () {
         key=$1
         value=$2
         processkvp
+        #if [[ $? > 0 ]]; then
+        #    logthis "error, exiting."
+        #fi
         shift 2
     done
+
+    return 0;
 }
