@@ -3,6 +3,8 @@
 Setting up Ubuntu from scratch on hardware.
 
 ```sh
+#!/bin/bash
+
 cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
 # ${HOME}/src/_provision
 provisionpuburl="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
