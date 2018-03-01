@@ -1,6 +1,7 @@
-# Laptop setup
+# Ubuntu Setup
 
-Setting up Ubuntu from scratch on hardware or a virtual machine.
+Setting up Ubuntu from scratch on hardware or a virtual machine. Other distros untested.
+
 
 ## Interactive CLI Setup
 
