@@ -21,7 +21,8 @@ fi
 
 if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
     logthis "Usage: $0 \"machine-name\"  \"username\" \"github-token\""
-    sleep 60
+		logthis "actual: $0 $1 $2 $3"
+    sleep 5
     return 1
 fi
 machinename="${1}"
