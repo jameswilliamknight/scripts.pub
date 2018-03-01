@@ -9,9 +9,20 @@
 #
 # See README.md in this directory.
 #
+
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    logthis "${errormessage}"
+    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
+. logger.sh ; loggerstarted
+
 if [[ $(($#%2)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-	logthis "Usage: $0 -u \"username\" -t \"github-token\""
-	exit 1
+    logthis "Usage: $0 -u \"username\" -t \"github-token\""
+    sleep 60
+    return 1
 fi
 #
 # Preparation
@@ -22,14 +33,6 @@ fi
 #   1. Delete old token(s)
 #   2. > "Generate new token": add a description and check "write:public_key"
 
-if [ ! -f "logger.sh" ]; then
-    me=`basename "$0"`
-    errormessage="critical error in '${me}': missing: logger.sh"
-    logthis "${errormessage}"
-    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
-    return 1;
-fi
-. logger.sh ; loggerstarted
 
 # TODO: check id_rsa.pub exists and exit if it doesn't.
 
