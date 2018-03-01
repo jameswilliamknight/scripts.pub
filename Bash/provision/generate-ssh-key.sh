@@ -3,14 +3,22 @@
 # Summary
 #
 #   generates a user ssh key via an experimental process. Extracted to test.
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    logthis "${errormessage}"
+    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
+. logger.sh ; loggerstarted "scripts.pub\Bash\provision\generate-ssh-key.sh"
 
 P="expect"
 for P; do
     dpkg -s "$P" >/dev/null 2>&1 && {
-        # echo "$P is installed."
-        exit 0;
+        logthis "$P is installed."
+        #exit 0;
     } || {
-        # echo "$P is not installed."
+        logthis "$P is not installed. exiting."
         exit 1;
     }
 done
