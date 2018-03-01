@@ -24,6 +24,9 @@ chmod +x git.sh
 wget "${urlbase}/curl.sh"
 chmod +x curl.sh
 
+wget "${urlbase}/snap-expect.sh"
+chmod +x snap-expect.sh
+
 wget "${urlbase}/ubuntu/start.md"
 
 # bazinga
