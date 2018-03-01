@@ -37,15 +37,15 @@ fi
 if [ -z ${global_token+x} ]; then
     logthis "Enter a new admin:public_key personal access token:"
     read global_token
-else
-    logthis "global_token is set to '${global_token}'";
+#else
+    #logthis "global_token is set to '${global_token}'";
 fi
 
 # email
 if [ -z ${global_email+x} ]; then
     logthis "Enter your git config email address:"
     read global_email
-else
+#else
     #logthis "global_email is set to '${global_email}'";
 fi
 
@@ -53,7 +53,7 @@ fi
 if [ -z ${global_pcname+x} ]; then
     logthis "Enter a name for this machine on github:"
     read global_pcname
-else
+#else
     #logthis "global_pcname is set to '${global_pcname}'";
 fi
 
@@ -61,7 +61,7 @@ fi
 if [ -z ${global_githubusername+x} ]; then
     logthis "Enter your github username:"
     read global_githubusername
-else
+#else
     #logthis "global_ is set to '${global_githubusername}'";
 fi
 
@@ -69,7 +69,7 @@ fi
 if [ -z ${global_githubpassword+x} ]; then
     logthis "Enter your github password:"
     read -s global_githubpassword
-else
+#else
     #logthis "global_githubpassword is set to '${global_githubpassword}'";
 fi
 
@@ -77,7 +77,7 @@ fi
 if [ -z ${global_passphrase+x} ]; then
     logthis "Enter a passphrase for your ssh private key:"
     read -s global_passphrase
-else
+#else
     #logthis "global_passphrase is set to '${global_passphrase}'";
 fi
 
