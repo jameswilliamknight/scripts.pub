@@ -10,7 +10,6 @@
 #     the public key to clipboard (middle mouse/ wheel click)
 #
 #   TODO: Display on jknightdev.com alongside start.md
-#   TODO: Elevate first.
 #   TODO: getKeyname in 'add-github-pubkey.sh' should use githubMachineName
 #
 # ==========================================================
@@ -23,17 +22,20 @@
 echo "Enter a new admin:public_key personal access token:"
 read token
 
-echo "Enter your email address:"
+echo "Enter your git config email address:"
 read email
-
-echo "Enter your github username:"
-read username
 
 echo "Enter a name for this machine on github:"
 read githubMachineName
 
+echo "Enter your github username:"
+read username
+
+echo "Enter your github password:"
+read -s githubpassword
+
 echo "Enter a passphrase for your ssh private key:"
-read passphrase
+read -s passphrase
 
 echo "You have entered: ${email}@${githubMachineName} continuing install..."
 
