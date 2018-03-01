@@ -29,6 +29,7 @@ githubMachineName=$2
 passphrase=$3
 
 # Creating RSA Key Pair
+logthis "generating ssh key with email='${email}', passphrase='${passphrase}'"
 . generate-ssh-key.sh "${email}" "${passphrase}"
 
 privatekeyfile="${HOME}/.ssh/id_rsa"
@@ -36,6 +37,8 @@ if [ ! -f "${privatekeyfile}" ]; then
     logthis "private key file='${privatekeyfile}' does not exist."
     return 1;
 fi
+
+logthis "private key detected. setting up ssh-agent..."
 
 # ssh-keygen -t rsa -b 4096 -C "$email" -f "${HOME}/.ssh/id_rsa" # -P "${passphrase}"
 # Enter file in which to save the key (/home/james/.ssh/id_rsa)
@@ -68,6 +71,7 @@ else
     exit 1
 fi
 
+logthis "Setting git config: email, name, and push.default=simple"
 git config --global user.email "$email"
 git config --global user.name "$githubMachineName"
 git config --global push.default simple
