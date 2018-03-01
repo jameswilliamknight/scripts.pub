@@ -14,7 +14,10 @@ wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provisio
 
 **Known Bugs:**
 
-- you need to manually enter the name of the key. this should reuse the machine name provided.
+- requires curl
+    - `sudo apt install curl`
+- script requires excess manual intervention:
+    - you need to manually enter the name of the key. this should reuse the machine name provided.
 
 
 ## Introduction
