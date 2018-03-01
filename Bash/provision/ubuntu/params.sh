@@ -15,7 +15,7 @@ function loadbootstrapperparams () {
     	  return 1;
     fi
 
-    keyRegex="^--[a-zA-Z]{2,}$";
+    keyRegex="^--[a-zA-Z_-]{2,}$";
     function processkvp () {
         if [[ $key =~ $keyRegex ]]; then
             logthis "{ \"$key\": \"$value\" }"
