@@ -3,10 +3,7 @@
 # Summary
 #   processes all params setting global variable. must be in function.
 
-function logthis (){
-    echo "${1}"
-    echo "${1}" >> "${HOME}/bootstrap.params.log"
-}
+. logger.sh
 
 function loadbootstrapperparams () {
     USAGE="Usage: $0 -k \"first key+value\" -k \"second key+value\""

@@ -10,7 +10,7 @@
 # See README.md in this directory.
 #
 if [[ $(($#%2)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-	echo "Usage: $0 -u \"username\" -t \"github-token\""
+	logthis "Usage: $0 -u \"username\" -t \"github-token\""
 	exit 1
 fi
 #
@@ -22,6 +22,15 @@ fi
 #   1. Delete old token(s)
 #   2. > "Generate new token": add a description and check "write:public_key"
 
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    logthis "${errormessage}"
+    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
+. logger.sh
+
 # TODO: check id_rsa.pub exists and exit if it doesn't.
 
 
@@ -30,18 +39,18 @@ function getInput () {
   varDesc=$2
 
   if [[ -v $varName ]]; then
-    echo "$varName is already set!"
+    logthis "$varName is already set!"
     return
   fi
 
   if [ "$#" == "2" ]; then
     # prompt user
-    echo -n "Enter $varDesc:"
+    logthis -n "Enter $varDesc:"
     read $varName
   elif [ "$#" == "3" ]; then
     username="$3"
   else
-    echo "error getting $varDesc"
+    logthis "error getting $varDesc"
     exit 1
   fi
 }
@@ -60,7 +69,7 @@ function getKeyname () {
 
 function processkvp () {
   if [[ $key =~ ^-[a-zA-Z]$ ]]; then
-    #echo "{ \"$key\": \"$value\" }"
+    #logthis "{ \"$key\": \"$value\" }"
     if [[ "$key" =~ ^-[uU]$ ]]; then
       username=$value
     elif [[ $key =~ ^-[tT]$ ]]; then
@@ -68,11 +77,11 @@ function processkvp () {
     elif [[ $key =~ ^-[kK]$ ]]; then
       keyname=$value
     else
-      echo "invalid flag: $key"
+      logthis "invalid flag: $key"
       exit 1;
     fi
   else
-    echo "invalid flag format: '$key'"
+    logthis "invalid flag format: '$key'"
     exit 1
   fi
 }
@@ -90,5 +99,5 @@ getUsername
 getToken
 getKeyname
 data='{"title":"'$keyname'","key":"'`cat ~/.ssh/id_rsa.pub`'"}';
-echo "Uploading private key to ${username}@github: ${data}"
+logthis "Uploading private key to ${username}@github: ${data}"
 curl -v -H "Authorization: token $token" -u "$username" --data "$data" https://api.github.com/user/keys

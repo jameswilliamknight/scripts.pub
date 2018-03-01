@@ -10,9 +10,17 @@
 #   - requires manual intervention to set passphrase
 #
 # ==========================================================
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    logthis "${errormessage}"
+    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
+. logger.sh
 
 if [[ $(($#%2)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-	echo "Usage: $0 \"email-address\" \"github-machine-name\""
+	logthis "Usage: $0 \"email-address\" \"github-machine-name\""
 	exit 1
 fi
 
@@ -34,36 +42,36 @@ sshAgentPID=$(eval $pid | grep -o -E '[0-9]+')
 
 # 3.1: Test that sshAgentPID has been set/exists
 if [ -z ${sshAgentPID+x} ]; then
-	echo "provision >  sshAgentPID is unset";
+	logthis "provision >  sshAgentPID is unset";
 	exit 1;
 else
-	echo "provision >  sshAgentPID is set to '$sshAgentPID'";
+	logthis "provision >  sshAgentPID is set to '$sshAgentPID'";
 fi
 
 # 3.2: if $sshAgentPID is not an empty string or null or something...
 if [ $sshAgentPID -gt 0 ]; then
-    echo "provision >  pid parsed OK";
+    logthis "provision >  pid parsed OK";
     # we now have an integer variable
     ssh-add ~/.ssh/id_rsa
     # You will be prompted to enter your passphrase.
     #
     # Verify this is true...
-    echo "Passphrase now unlocked while logged in"
+    logthis "Passphrase now unlocked while logged in"
 else
-    echo "provision >  pid is zero or lower"
+    logthis "provision >  pid is zero or lower"
     exit 1
 fi
 
-# get the screen to echo locations of saved private and public keys etc.
+# get the screen to logthis locations of saved private and public keys etc.
 
-printf "\n==========provision=============\n\n"
-printf "The key pair are located at:\n\n"
-echo "    " ~/.ssh/id_rsa
-echo "    " ~/.ssh/id_rsa.pub
-printf "\nPlease upload these to your github account"
-printf "\nsee: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/"
-printf "\nThe public key has been copied to the ('Mouse 3' / 'Mouse Wheel Down') clipboard!\n"
-printf "\n================================\n\n"
+logthis "\n==========provision=============\n\n"
+logthis "The key pair are located at:\n\n"
+logthis "    " ~/.ssh/id_rsa
+logthis "    " ~/.ssh/id_rsa.pub
+logthis "\nPlease upload these to your github account"
+logthis "\nsee: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/"
+logthis "\nThe public key has been copied to the ('Mouse 3' / 'Mouse Wheel Down') clipboard!\n"
+logthis "\n================================\n\n"
 
 git config --global user.email "$email"
 git config --global user.name "$githubMachineName"
