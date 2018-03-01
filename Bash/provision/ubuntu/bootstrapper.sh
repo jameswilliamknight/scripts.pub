@@ -14,6 +14,9 @@
 #
 # ==========================================================
 
+. params.sh ; loadbootstrapperparams "$@"
+
+return; # TESTING loadbootstrapperparams
 # Get some common details
 
 # TODO: validate token for sanity. (what encoding is it, base64?)

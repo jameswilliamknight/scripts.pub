@@ -9,6 +9,9 @@ urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provi
 wget "${urlbase}/ubuntu/github-bootstrap.sh"
 chmod +x github-bootstrap.sh
 
+wget "${urlbase}/ubuntu/params.sh"
+chmod +x params.sh
+
 wget "${urlbase}/add-github-pubkey.sh"
 chmod +x add-github-pubkey.sh
 
