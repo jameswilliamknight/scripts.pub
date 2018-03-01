@@ -25,5 +25,5 @@ function logthisprintf (){
 
 function loggerstarted () {
     me="$1"
-    logthis "logger started for ${me}"
+    logthis "! running: '${me}'"
 }

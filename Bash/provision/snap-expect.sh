@@ -12,6 +12,6 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\snap-expect.sh"
 
-logthis "installing snap-expceted..."
-sudo apt-get -qq install expect -y 1> /dev/null
+logthis "installing expect..."
+sudo apt-get -qq install expect -y ; # 1> /dev/null
 logthis "finished installing snap-expceted"
