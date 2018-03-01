@@ -36,5 +36,5 @@ read githubMachineName
 # TODO: allow re-entry.
 echo "You have entered: $email@$githubMachineName continuing install..."
 
-../xclip-git-ssh-keys.sh "$email" "$githubMachineName"
-../add-github-pubkey.sh -u "$username" -t "$token"
+. xclip-git-ssh-keys.sh "$email" "$githubMachineName"
+. add-github-pubkey.sh -u "$username" -t "$token"
