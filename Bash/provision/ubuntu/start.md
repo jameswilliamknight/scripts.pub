@@ -9,7 +9,7 @@ Setting up Ubuntu from scratch on hardware.
 #          Also, it's not tested yet ✌️
 #
 # Refresh this page before copying command:
-wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
+wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
 [> Open Script](https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/web-bootstrapper.sh)
 
