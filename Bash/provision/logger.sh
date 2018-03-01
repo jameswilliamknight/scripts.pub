@@ -13,7 +13,12 @@ function logthisprintf (){
     printf "${1}" >> "${HOME}/bootstrap.params.log"
 }
 
+# function loggerstarted () {
+#     me=`basename "$0"`
+#     logthis "logger started for ${me}"
+# }
+
 function loggerstarted () {
-    me=`basename "$0"`
+    me="$1"
     logthis "logger started for ${me}"
 }
