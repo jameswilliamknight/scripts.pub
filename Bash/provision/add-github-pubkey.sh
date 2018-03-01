@@ -41,6 +41,7 @@ githubpassword="${4}"
 keyname="${machinename}"
 token="${githubtoken}"
 sshkeypath="${HOME}/.ssh/id_rsa.pub"
+logthis "sshkeypath='${sshkeypath}'"
 logthisfile "${sshkeypath}"
 data='{"title":"'$keyname'","key":"'`cat \"${sshkeypath}\"`'"}';
 
