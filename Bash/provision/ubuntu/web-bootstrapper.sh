@@ -4,49 +4,28 @@
 
 cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
 # ${HOME}/src/_provision
-urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
 
 sudo apt-get -qq install dos2unix -y
 
-wget -q "${urlbase}/logger.sh" --no-cache
-dos2unix logger.sh
-chmod +x logger.sh
+function downloader () {
+    urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
+    wget -q --no-cache "${urlbase}/$1"
+    dos2unix logger.sh
+    if [ ! -z ${2+x} ] && [ "${2}" != "no-execute" ]; then
+        chmod +x logger.sh
+    fi
+}
 
-
-wget -q "${urlbase}/github-bootstrap.sh" --no-cache
-dos2unix github-bootstrap.sh
-chmod +x github-bootstrap.sh
-
-wget -q "${urlbase}/ubuntu/params.sh" --no-cache
-dos2unix params.sh
-chmod +x params.sh
-
-wget -q "${urlbase}/add-github-pubkey.sh" --no-cache
-dos2unix add-github-pubkey.sh
-chmod +x add-github-pubkey.sh
-
-wget -q "${urlbase}/ubuntu/bootstrapper.sh" --no-cache
-dos2unix bootstrapper.sh
-chmod +x bootstrapper.sh
-
-wget -q "${urlbase}/setup-ssh-keys.sh" --no-cache
-dos2unix setup-ssh-keys.sh
-chmod +x setup-ssh-keys.sh
-
-wget -q "${urlbase}/git.sh" --no-cache
-dos2unix git.sh
-chmod +x git.sh
-
-wget -q "${urlbase}/curl.sh" --no-cache
-dos2unix curl.sh
-chmod +x curl.sh
-
-wget -q "${urlbase}/snap-expect.sh" --no-cache
-dos2unix snap-expect.sh
-chmod +x snap-expect.sh
-
-wget -q "${urlbase}/ubuntu/start.md" --no-cache
-dos2unix start.md
+downloader "logger.sh"
+downloader "github-bootstrap.sh"
+downloader "ubuntu/params.sh"
+downloader "add-github-pubkey.sh"
+downloader "ubuntu/bootstrapper.sh"
+downloader "setup-ssh-keys.sh"
+downloader "git.sh"
+downloader "curl.sh"
+downloader "snap-expect.sh"
+downloader "ubuntu/start.md" "no-execute"
 
 # bazinga
 . bootstrapper.sh
