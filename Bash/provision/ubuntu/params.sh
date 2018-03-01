@@ -3,6 +3,13 @@
 # Summary
 #   processes all params setting global variable. must be in function.
 
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    logthis "${errormessage}"
+    logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
 . logger.sh
 
 function loadbootstrapperparams () {
