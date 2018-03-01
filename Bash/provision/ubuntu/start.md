@@ -1,6 +1,8 @@
 # Laptop setup
 
-Setting up Ubuntu from scratch on hardware.
+Setting up Ubuntu from scratch on hardware or a virtual machine.
+
+## Interactive CLI Setup
 
 ```sh
 # Warning: running random commands you find lying around,
@@ -11,47 +13,27 @@ Setting up Ubuntu from scratch on hardware.
 # Refresh this page before copying command:
 wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
-[> Open Script](https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/web-bootstrapper.sh)
+[see: web-bootstrapper.sh](https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/web-bootstrapper.sh)
 
-example one-liner you can create **note - construct your one-liner by modifying this one, store somewhere secure**:
+## Example one-liner
+
+- **90% Automated**
+
 ```sh
 wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh  --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "my-vm-ubuntu-1804-nightly" --github-username "mygithubusername" --github-password "mygithubpassword" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
 ```
 
 
-## Introduction
+## Documentation Checklist / TODOs
 
-I have recently freed up my personal laptop and have the chance to use it as a Linux daily driver (mostly for home use).
-
-
-## Documentation Checklist / TODO / Meta
-
-These notes are to improve the document itself.
-
-1. Automate this process
-    1. Design a **bootstrapper** script that is:
-        - generic
-        - hosted on my website
-        - surrounded by the bare minimum documentation
-        - bare minimum of dependencies
-        - may bootstrap higher level scripting languages, e.g. Python.
 1. Link to this documentation from my [personal website](www.jknightdev.com).
 
 
-## Script Run Order
+## Dell XPS 15 9550
 
-- `Scripts.pub/Bash/provision/ubuntu/bootstrapper.sh` - run from a fresh ubuntu install
-- `Scripts/Bash/provision/ubuntu/installer.sh` - installer for third party software and personal configurations (not yet included in scripts.pub.git)
-
-
-## Raw log of events
-
-1. Using Dell XPS 9550 with an i7 6700HQ, 16gb RAM and 512 NVMe SSD.
 1. UEFI BIOS tweaks
     1. Disabled Secure Boot
     1. Changed RAID to AHCI (allows Linux to detect laptop hard disk)
-1. Installed Ubuntu GNOME 17.04 x64
+1. Installed Ubuntu
     1. Encrypted home directory
     1. Did not install updates and 3rd party software
-1. Started writing this documentation once I didn't know which of my scripts to use.
-1. Moved documentation to public scripts repository on github.
