@@ -15,8 +15,11 @@ chmod +x add-github-pubkey.sh
 wget "${urlbase}/ubuntu/bootstrapper.sh"
 chmod +x bootstrapper.sh
 
-wget "${urlbase}/xclip-git-ssh-keys.sh"
+wget "${urlbase}/setup-ssh-keys.sh"
 chmod +x xclip-git-ssh-keys.sh
+
+wget "${urlbase}/git.sh"
+chmod +x git.sh
 
 wget "${urlbase}/curl.sh"
 chmod +x curl.sh

@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 #
 # Summary: Adds the public key (for the current user) to github. This script is
-#          intended to be hosted somewhere, downloaded (wget) and modified to
-#          add github token.
+#   intended to be hosted somewhere, downloaded (wget) and modified to add
+#   github token.
+#
+# This script should be called from:
+#   `scripts.pub/Bash/provision/ubuntu/bootstrapper.sh`
 #
 # See README.md in this directory.
 #

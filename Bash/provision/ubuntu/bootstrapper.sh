@@ -25,7 +25,6 @@ read token
 
 echo "Enter your email address:"
 read email
-# TODO: validate email address with simple regex
 
 echo "Enter your github username:"
 read username
@@ -33,9 +32,9 @@ read username
 echo "Enter a name for this machine on github:"
 read githubMachineName
 
-# TODO: allow re-entry.
 echo "You have entered: $email@$githubMachineName continuing install..."
 
+. git.sh
 . curl.sh
-. xclip-git-ssh-keys.sh "$email" "$githubMachineName"
+. setup-ssh-keys.sh "$email" "$githubMachineName"
 . add-github-pubkey.sh -u "$username" -t "$token"

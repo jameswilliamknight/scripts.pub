@@ -3,6 +3,7 @@
 # Summary
 #
 #   This script
+#   - must be run on a terminal emulator loaded in the Ubuntu GNOME environment.
 #   - installs xclip
 #   - installs git
 #   - generates an RSA Key Pair,

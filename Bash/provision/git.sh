@@ -6,4 +6,4 @@
 # This script should be called from:
 #   `scripts.pub/Bash/provision/ubuntu/bootstrapper.sh`
 
-sudo apt install curl -y
+sudo apt-get install git-all -y

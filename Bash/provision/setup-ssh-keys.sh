@@ -6,7 +6,6 @@
 #       `scripts.pub/Bash/provision/ubuntu/bootstrapper.sh`
 #
 #   This script
-#   - installs git
 #   - generates an RSA Key Pair, adds it to ssh-agent
 #   - requires manual intervention to set passphrase
 #
@@ -20,11 +19,7 @@ fi
 email=$1
 githubMachineName=$2
 
-# 1: Install git
-sudo apt install git
-
-# 2: Creating RSA Key Pair
-#    TODO: Parameterise email address and provide as arg to script.
+# Creating RSA Key Pair
 ssh-keygen -t rsa -b 4096 -C "$email"
 # Enter file in which to save the key (/home/james/.ssh/id_rsa)
 #input-key:<Enter>
@@ -64,10 +59,6 @@ echo "    " ~/.ssh/id_rsa
 echo "    " ~/.ssh/id_rsa.pub
 printf "\nPlease upload these to your github account"
 printf "\nsee: https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/"
-
-# 'tr -d' strips newline characters
-cat ~/.ssh/id_rsa.pub | tr -d '\n' | xclip -i
-
 printf "\nThe public key has been copied to the ('Mouse 3' / 'Mouse Wheel Down') clipboard!\n"
 printf "\n================================\n\n"
 
