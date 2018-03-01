@@ -5,10 +5,10 @@
 #   This script should be called from:
 #       `scripts.pub/Bash/provision/ubuntu/bootstrapper.sh`
 #
-#   This script installs: xclip, git
-#   it then, generates an RSA Key Pair, adds it to ssh-agent
-#   and finally prints locations of added files, and sends
-#   the public key to clipboard (middle mouse/ wheel click)
+#   This script
+#   - installs git
+#   - generates an RSA Key Pair, adds it to ssh-agent
+#   - requires manual intervention to set passphrase
 #
 # ==========================================================
 
@@ -19,9 +19,6 @@ fi
 
 email=$1
 githubMachineName=$2
-
-# 1: Install xclip
-sudo apt install xclip
 
 # 1: Install git
 sudo apt install git
