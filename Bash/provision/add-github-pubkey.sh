@@ -29,7 +29,7 @@ if [ ! -f "logger.sh" ]; then
     logthis "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh
+. logger.sh ; loggerstarted
 
 # TODO: check id_rsa.pub exists and exit if it doesn't.
 

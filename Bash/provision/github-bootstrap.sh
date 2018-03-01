@@ -17,6 +17,15 @@
 #
 # ==========================================================
 
+if [ ! -f "logger.sh" ]; then
+    me=`basename "$0"`
+    errormessage="critical error in '${me}': missing: logger.sh"
+    echo "${errormessage}"
+    echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
+    return 1;
+fi
+. logger.sh ; loggerstarted
+
 if [[ ! $(($#)) = 2 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
 	echo "Usage: $0 \"email@address.com\" \"your-computers-name\""
 	exit 1

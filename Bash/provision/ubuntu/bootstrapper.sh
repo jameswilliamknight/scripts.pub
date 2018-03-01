@@ -21,7 +21,7 @@ if [ ! -f "logger.sh" ]; then
     echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh
+. logger.sh ; loggerstarted
 
 if [ ! -f "params.sh" ]; then
     logthis "missing: params.sh"

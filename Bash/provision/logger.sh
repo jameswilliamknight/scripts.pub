@@ -13,4 +13,7 @@ function logthisprintf (){
     printf "${1}" >> "${HOME}/bootstrap.params.log"
 }
 
-return 0;
+function loggerstarted () {
+    me=`basename "$0"`
+    echo "logger started for ${me}"
+}
