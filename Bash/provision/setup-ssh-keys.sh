@@ -20,7 +20,7 @@ fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\setup-ssh-keys.sh"
 
 if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-	logthis "Usage: $0 \"email-address\" \"github-machine-name\""
+	logthis "Usage: $0 \"email-address\" \"github-machine-name\" \"passphrase\""
 	return 1
 fi
 
@@ -30,6 +30,12 @@ passphrase=$3
 
 # Creating RSA Key Pair
 . generate-ssh-key.sh "${email}" "${passphrase}"
+
+privatekeyfile="${HOME}/.ssh/id_rsa"
+if [ ! -f "${privatekeyfile}" ]; then
+    logthis "private key file='${privatekeyfile}' does not exist."
+    return 1;
+fi
 
 # ssh-keygen -t rsa -b 4096 -C "$email" -f "${HOME}/.ssh/id_rsa" # -P "${passphrase}"
 # Enter file in which to save the key (/home/james/.ssh/id_rsa)

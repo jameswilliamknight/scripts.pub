@@ -31,3 +31,9 @@ expect \"Enter same passphrase again:\"
 send \"${passphrase}\r\"
 ")
 #set +x
+
+privatekeyfile="${HOME}/.ssh/id_rsa"
+if [ ! -f "${privatekeyfile}" ]; then
+    logthis "private key file='${privatekeyfile}' failed to create. Aborting"
+    return 1;
+fi
