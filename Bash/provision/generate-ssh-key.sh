@@ -1,3 +1,9 @@
+#!/usr/bin/env bash
+#
+# Summary
+#
+#   generates a user ssh key via an experimental process. Extracted to test.
+
 email=$1
 passphrase=$2
 
