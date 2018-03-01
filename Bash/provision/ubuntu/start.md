@@ -7,6 +7,8 @@ Setting up Ubuntu from scratch on hardware.
 #          on the internet without understanding them can
 #          be a highly dangerous proposition indeed.
 #          Also, it's not tested yet ✌️
+#
+# Refresh this page before copying command:
 wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
 
