@@ -16,5 +16,5 @@ fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\curl.sh"
 
 logthis "installing curl..."
-sudo apt-get -qq install curl -y
+sudo apt-get -qq install curl -y  1> /dev/null
 logthis "finished installing curl"
