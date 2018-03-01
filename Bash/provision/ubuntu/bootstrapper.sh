@@ -15,7 +15,7 @@
 # ==========================================================
 
 . params.sh ; loadbootstrapperparams "$@"
-echo global_token
+echo "global_token = $global_token"
 echo "global_email = $global_email"
 echo "global_pcname = $global_pcname"
 echo "global_githubusername = $global_githubusername"
@@ -23,33 +23,61 @@ echo "global_githubpassword = $global_githubpassword"
 echo "global_passphrase = $global_passphrase"
 
 
-return; # TESTING loadbootstrapperparams
 # Get some common details
 
 # TODO: validate token for sanity. (what encoding is it, base64?)
 # Personal Access Tokens should take the form:
 #   a872453ffcef867301439c88792fd0878b4cd098
-echo "Enter a new admin:public_key personal access token:"
-read token
+if [ -z ${global_token+x} ]; then
+    echo "Enter a new admin:public_key personal access token:"
+    read global_token
+else
+    echo "global_token is set to '${global_token}'";
+fi
 
-echo "Enter your git config email address:"
-read email
+# email
+if [ -z ${global_email+x} ]; then
+    echo "Enter your git config email address:"
+    read global_email
+else
+    echo "global_email is set to '${global_email}'";
+fi
 
-echo "Enter a name for this machine on github:"
-read githubMachineName
+# pc name
+if [ -z ${global_pcname+x} ]; then
+    echo "Enter a name for this machine on github:"
+    read global_pcname
+else
+    echo "global_pcname is set to '${global_pcname}'";
+fi
 
-echo "Enter your github username:"
-read username
+# github username
+if [ -z ${global_githubusername+x} ]; then
+    echo "Enter your github username:"
+    read global_githubusername
+else
+    echo "global_ is set to '${global_githubusername}'";
+fi
 
-echo "Enter your github password:"
-read -s githubpassword
+# github password
+if [ -z ${global_githubpassword+x} ]; then
+    echo "Enter your github password:"
+    read -s global_githubpassword
+else
+    echo "global_githubpassword is set to '${global_githubpassword}'";
+fi
 
-echo "Enter a passphrase for your ssh private key:"
-read -s passphrase
+# passphrase
+if [ -z ${global_passphrase+x} ]; then
+    echo "Enter a passphrase for your ssh private key:"
+    read -s global_passphrase
+else
+    echo "global_passphrase is set to '${global_passphrase}'";
+fi
 
-echo "You have entered: ${email}@${githubMachineName} continuing install..."
+echo "You have entered: ${global_email}@${global_pcname} continuing install..."
 
 . git.sh
 . curl.sh
-. setup-ssh-keys.sh "${email}" "${githubMachineName}" "${passphrase}"
-. add-github-pubkey.sh -u "${username}" -t "${token}"
+. setup-ssh-keys.sh "${global_email}" "${global_pcname}" "${global_passphrase}"
+. add-github-pubkey.sh -u "${global_githubusername}" -t "${global_token}"
