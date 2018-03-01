@@ -18,9 +18,9 @@ function loadbootstrapperparams () {
     keyRegex="^--[a-zA-Z_-]{2,}$";
     function processkvp () {
         if [[ $key =~ $keyRegex ]]; then
-            key2="global::${key//-/}"
+            key2="global_${key//-/}"
             logthis "{ \"$key2\": \"$value\" }"
-            magic=$(echo "${key2}=${value}")
+            magic=$(echo "${key2}=\"${value}\"")
             eval ${magic}
         else
             logthis "invalid flag format: '$key'"
