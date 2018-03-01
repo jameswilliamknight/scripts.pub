@@ -11,6 +11,7 @@ Setting up Ubuntu from scratch on hardware.
 # Refresh this page before copying command:
 wget "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
+[> Download Script](https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh)
 
 **Known Bugs:**
 
