@@ -87,5 +87,5 @@ getUsername
 getToken
 getKeyname
 data='{"title":"'$keyname'","key":"'`cat ~/.ssh/id_rsa.pub`'"}';
-echo "Uploading private key to $username@github: $data"
+echo "Uploading private key to ${username}@github: ${data}"
 curl -v -H "Authorization: token $token" -u "$username" --data "$data" https://api.github.com/user/keys
