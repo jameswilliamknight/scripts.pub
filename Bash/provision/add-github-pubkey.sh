@@ -19,12 +19,12 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\add-github-pubkey.sh"
 
-if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
-    logthis "Usage: $0 \"machine-name\"  \"username\" \"github-token\""
-		logthis "actual: $0 $1 $2 $3"
-    sleep 5
-    return 1
-fi
+#if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
+#    logthis "Usage: $0 \"machine-name\"  \"username\" \"github-token\""
+#		logthis "actual: $0 $1 $2 $3"
+#    sleep 5
+#    return 1
+#fi
 machinename="${1}"
 githubusername="${2}"
 githubtoken="${3}"
