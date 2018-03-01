@@ -32,6 +32,8 @@ passphrase=$3
 logthis "generating ssh key with email='${email}', passphrase='${passphrase}'"
 . generate-ssh-key.sh "${email}" "${passphrase}"
 
+logthis "back out of generating ssh key"
+
 privatekeyfile="${HOME}/.ssh/id_rsa"
 if [ ! -f "${privatekeyfile}" ]; then
     logthis "private key file='${privatekeyfile}' does not exist."
