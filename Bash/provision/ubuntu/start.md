@@ -12,7 +12,7 @@ Setting up Ubuntu from scratch on hardware or a virtual machine. Other distros u
 #          Also, it's not tested yet ✌️
 #
 # Refresh this page before copying command:
-sudo apt-get update ; sudo apt-get install git curl -y ; wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
+wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
 ```
 [see: web-bootstrapper.sh](https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/web-bootstrapper.sh)
 
@@ -21,7 +21,7 @@ sudo apt-get update ; sudo apt-get install git curl -y ; wget -q "https://github
 - **90% Automated**
 
 ```sh
-sudo apt-get update ; sudo apt-get install git curl -y ; wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh  --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "my-vm-ubuntu-1804-nightly" --github-username "mygithubusername" --github-password "mygithubpassword" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
+wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh  --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "my-vm-ubuntu-1804-nightly" --github-username "mygithubusername" --github-password "mygithubpassword" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
 ```
 
 
