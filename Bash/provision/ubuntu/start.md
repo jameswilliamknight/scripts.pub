@@ -12,7 +12,7 @@ Setting up Ubuntu from scratch on hardware or a virtual machine. Other distros u
 #          Also, it's not tested yet ✌️
 #
 # Refresh this page before copying command:
-wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh
+scr="web-bootstrapper.sh" ; wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/$scr" --no-cache ; chmod +x $scr ; source $scr
 ```
 [see: web-bootstrapper.sh](https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/web-bootstrapper.sh)
 
@@ -21,7 +21,7 @@ wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provi
 - **90% Automated**
 
 ```sh
-wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/web-bootstrapper.sh" --no-cache ; chmod +x web-bootstrapper.sh ; source web-bootstrapper.sh  --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "my-vm-ubuntu-1804-nightly" --github-username "mygithubusername" --github-password "mygithubpassword" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
+scr="web-bootstrapper.sh" ; wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/$scr" --no-cache ; chmod +x $scr ; source $scr  --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "ubuntu-1804" --github-username "" --github-password "" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
 ```
 
 
