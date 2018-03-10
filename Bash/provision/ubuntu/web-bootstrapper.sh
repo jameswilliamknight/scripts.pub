@@ -11,6 +11,7 @@ function downloader () {
     #
     downloadfilename="${1}"
     #
+    # https://stackoverflow.com/a/13864829
     if [ ! -z ${2+x} ]
     then
         filename="${2}"
