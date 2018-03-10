@@ -14,7 +14,7 @@ function downloader () {
     # https://stackoverflow.com/a/13864829
     if [ ! -z ${2+x} ]
     then
-        filename="${2}"        
+        filename="${2}"
     fi
     urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
     wget -q --no-cache "${urlbase}/${downloadfilename}"
@@ -28,7 +28,7 @@ downloader "github-bootstrap.sh"
 downloader "ubuntu/params.sh" "params.sh"
 downloader "add-github-pubkey.sh"
 downloader "ubuntu/bootstrapper.sh" "bootstrapper.sh"
-downloader "setup-ssh-keys.sh"
+downloader "setup-ssh-key.sh"
 downloader "git.sh"
 downloader "curl.sh"
 #downloader "snap-expect.sh"
