@@ -4,7 +4,6 @@
 #
 #   This script
 #   - must be run on a terminal emulator loaded in the Ubuntu GNOME environment.
-#   - installs xclip
 #   - installs git
 #   - generates an RSA Key Pair,
 #   - adds RSA Key Pair to ssh-agent
@@ -26,16 +25,13 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\github-bootstrap.sh"
 
-if [[ ! $(($#)) = 2 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
+if [[ ! $(($#)) = 2 ]] || [[ $1 =~ ^((-[hH])|(--[hH][eEaA][lL][pP]))$ ]] ; then
 	echo "Usage: $0 \"email@address.com\" \"your-computers-name\""
 	exit 1
 fi
 
 email=$1;
 computerName=$2
-
-# 1: Install xclip
-sudo apt install xclip -y
 
 # 1: Install git
 sudo apt install git -y

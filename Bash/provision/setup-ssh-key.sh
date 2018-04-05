@@ -19,7 +19,7 @@ if [ ! -f "logger.sh" ]; then
 fi
 . logger.sh ; loggerstarted "scripts.pub\Bash\provision\setup-ssh-key.sh"
 
-if [[ $(($#%3)) > 0 ]] || [[ $1 =~ "^((-[hH])|(--[hH][eEaA][lL][pP]))$" ]] ; then
+if [[ $(($#%3)) > 0 ]] || [[ $1 =~ ^((-[hH])|(--[hH][eEaA][lL][pP]))$ ]] ; then
 	logthis "Usage: $0 \"email-address\" \"github-machine-name\" \"passphrase\""
 	return 1
 fi
