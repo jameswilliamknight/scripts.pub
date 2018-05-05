@@ -4,8 +4,7 @@ provisiondir="${HOME}/src/_provision"
 mkdir -p "${provisiondir}"
 cd "${provisiondir}"
 
-# -qq = don't output.
-sudo apt-get -qq update ; sudo apt-get -qq install dos2unix wget git -y
+sudo apt-get -qq update ; sudo apt-get -qq install dos2unix wget -y
 
 function downloader () {
     
@@ -19,10 +18,11 @@ function downloader () {
     fi
     urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
     wget -q --no-cache "${urlbase}/${downloadfilename}"
-    echo "converting: ./${filename}"
-    dos2unix "${filename}"
+    echo "converting: $(pwd)/${filename}"
+    dos2unix "./${filename}"
 }
 
+# get prerequisites
 downloader "logger.sh"
 downloader "generate-ssh-key.sh"
 downloader "github-bootstrap.sh"
@@ -32,7 +32,6 @@ downloader "ubuntu/bootstrapper.sh" "bootstrapper.sh"
 downloader "setup-ssh-key.sh"
 downloader "git.sh"
 downloader "curl.sh"
-#downloader "snap-expect.sh"
 
-# bazinga
+# install
 . bootstrapper.sh
