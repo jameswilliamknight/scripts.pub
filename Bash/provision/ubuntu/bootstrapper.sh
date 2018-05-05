@@ -21,7 +21,7 @@ if [ ! -f "logger.sh" ]; then
     echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
-. logger.sh ; loggerstarted "scripts.pub\Bash\provision\ubuntu\bootstrapper.sh"
+loggertoken="a5d2fd23" ; source logger.sh ; echo "logger loaded - scripts.pub\Bash\provision\ubuntu\bootstrapper.sh"
 
 if [ ! -f "params.sh" ]; then
     logthis "missing: params.sh"
