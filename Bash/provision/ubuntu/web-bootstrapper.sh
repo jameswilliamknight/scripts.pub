@@ -1,20 +1,21 @@
-#!/bin/bash
-#
-# TODO: clone the whole repo.
+#!/usr/bin/env bash
 
-cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
-# ${HOME}/src/_provision
+provisiondir="${HOME}/src/_provision"
+mkdir -p "${provisiondir}"
+cd "${provisiondir}"
 
+# -qq = don't output.
 sudo apt-get -qq update ; sudo apt-get -qq install dos2unix wget git -y
 
 function downloader () {
-    #
+    
     downloadfilename="${1}"
-    #
-    # https://stackoverflow.com/a/13864829
-    if [ ! -z ${2+x} ]
+    # if the second param to this function isn't set...
+    if [ ! -z ${2+xxx} ]
     then
         filename="${2}"
+    else
+        filename="${downloadfilename}"
     fi
     urlbase="https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision"
     wget -q --no-cache "${urlbase}/${downloadfilename}"
