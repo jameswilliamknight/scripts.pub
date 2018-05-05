@@ -1,16 +1,9 @@
 #!/usr/bin/env bash
 #
 # Summary
-#   This script is for setting up a desktop workstation
-#     running the latest stable release of Ubuntu GNOME.
+#   This script is for setting up a desktop workstation running the latest Ubuntu LTS.
 #
-#   This script installs: xclip, git
-#     it then, generates an RSA Key Pair, adds it to ssh-agent
-#     and finally prints locations of added files, and sends
-#     the public key to clipboard (middle mouse/ wheel click)
-#
-#   TODO: Display on jknightdev.com alongside start.md
-#   TODO: getKeyname in 'add-github-pubkey.sh' should use githubMachineName
+#   This script generates an RSA Key Pair, adds it to ssh-agent
 #
 # ==========================================================
 
@@ -21,6 +14,7 @@ if [ ! -f "logger.sh" ]; then
     echo "${errormessage}" >> "${HOME}/bootstrap.error.log"
     return 1;
 fi
+
 loggertoken="a5d2fd23" ; source logger.sh ; echo "logger loaded - scripts.pub\Bash\provision\ubuntu\bootstrapper.sh"
 
 if [ ! -f "params.sh" ]; then
@@ -76,7 +70,6 @@ fi
 
 . git.sh
 . curl.sh
-. snap-expect.sh
 . setup-ssh-key.sh "${global_email}" "${global_pcname}" "${global_passphrase}"
 . add-github-pubkey.sh "${global_pcname}" "${global_githubusername}" "${global_token}" "${global_githubpassword}"
 
