@@ -5,7 +5,7 @@
 cd "${HOME}" ; mkdir src ; cd src ; mkdir _provision ; cd _provision
 # ${HOME}/src/_provision
 
-sudo apt-get -qq update ; sudo apt-get -qq install dos2unix wget -y
+sudo apt-get -qq update ; sudo apt-get -qq install dos2unix wget git -y
 
 function downloader () {
     #
