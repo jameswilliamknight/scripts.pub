@@ -20,6 +20,8 @@ scr="web-bootstrapper.sh" ; wget -q "https://github.com/jameswilliamknight/scrip
 
 - **90% Automated**
 
+_note: the token is just an example_
+
 ```sh
 scr="web-bootstrapper.sh" ; wget -q "https://github.com/jameswilliamknight/scripts.pub/raw/master/Bash/provision/ubuntu/$scr" --no-cache ; chmod +x $scr ; source $scr --token "7305d1f3e18d1f4cd20bc6bbe448e6ec106e757c" --email "myemail@gmail.com" --pc-name "ubuntu-1804" --github-username "" --github-password "" --passphrase "this-feature-is-in-progress" ; cd "${HOME}/src/" ; git clone git@github.com:mygithubusername/scripts.git
 ```
