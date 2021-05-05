@@ -1,0 +1,21 @@
+@-moz-document domain("vault.bitwarden.com") {
+/*
+ *  Wide mode
+ */
+.container.page-content {width: 98%}
+
+
+/*
+ *  Spaces out the folder tree view wider
+ */
+.card ul.fa-ul.card-ul ul.carets {
+    margin-left: 1.8em;
+}
+
+/*
+ *  Better line spacing in left-hand menu
+ */
+body {
+    line-height: 1.5;
+}
+}
