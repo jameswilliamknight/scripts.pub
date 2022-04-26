@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#
+# Usages
+#     Please run to check: root@root# crontab -l
+#
+# Usage
+#     [-h|--help]    - show help
+
+# [[archlinux]] [[logging]] [[logger]] [[bash]]
+logdir="/var/log"
+logpath="$logdir/download-packages.log"
+if [ ! -f $logpath ]; then
+    mkdir -p "${logdir}"
+    touch "${logpath}"
+fi
+
+function printlog () {
+    local DATE=`date '+%Y-%m-%d %H:%M:%S'`
+    echo "${DATE}: $1" | tee -a $logpath
+}
+
+# root check
+user="$(whoami)"
+if [ "$user" != "root" ]; then
+    printlog "This script must be run as root user."
+    exit 1;
+fi
+
+if [ -z "${1+xxx}" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "Usage"
+    echo "    NOTE: This script must be run as root."
+    echo "    --download                 downloads new packages"
+fi
+
+if [ "$1" == "--download" ]; then
+    printlog "Downloading new packages..."
+
+    # TODO: print to log file...
+    pacman -Syuw --noconfirm
+    printlog "New package check complete."
+    exit 0;
+fi
+
+exit 1; # should be impossible to reach here.

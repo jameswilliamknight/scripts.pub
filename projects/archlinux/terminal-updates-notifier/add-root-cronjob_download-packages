@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euxo pipefail # https://linuxtect.com/make-bash-shell-safe-with-set-euxo-pipefail/
+#
+# Usage
+#     [-h|--help]    - show help
+#
+# Dependencies
+#     - cronie (Arch)
+
+cron="1 * * * *" # each hour
+#cron="* * * * *" # test every minute
+logdir="/tmp"
+logpath="$logdir/.download-packages.log"
+if [ ! -f $logpath ]; then
+    mkdir -p "${logdir}"
+    touch "${logpath}"
+fi
+if [ -f $logpath ]; then
+    chown root:root "$logpath"
+fi
+
+function printlog () {
+    local DATE=`date '+%Y-%m-%d %H:%M:%S'`
+    echo "${DATE}: $1" | tee -a $logpath
+}
+
+# root check, script must be run as user first.
+user="$(whoami)"
+if [ "$user" != "root" ]; then
+    printlog "This script must be run as root user."
+    exit 1;
+fi
+printlog "root user detected."
+
+
+# show help if no args are passed, or if help flag gets passed
+if [ -z "${1+xxx}" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "Usage"
+    echo "--install-cron             creates cronjob to run this script hourly"
+fi
+
+
+# run as user.
+if [ "$1" == "--install-cron" ]; then
+    printlog "Attempting to install cron job"
+
+    # rewrite crontab into temp file
+    cwd=$(pwd)
+    tempdir="/tmp/croninstall"
+    mkdir -p $tempdir
+    cd $tempdir
+    job="crontab.tmp"
+    # copy current crontab to temporary file $job
+    crontab -l > $job
+    printlog "creating temporary crontab for editing: '${tempdir}/$job'"
+
+    # custom
+    SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+    BIN_DIR="$SCRIPT_DIR/bin"
+    dlscript="$BIN_DIR/download-packages"
+    cronjob="${cron} /usr/bin/env bash ${dlscript} --download"
+    echo "${cronjob}" >> $job
+    printlog "installing cron job from '${tempdir}/$job' to ${user}'s crontab:"
+    printlog "${cronjob}"
+    crontab $job
+    printlog "cleaning up temporary cron job install files"
+    rm -rf $tempdir
+    cd "${cwd}"
+    printlog "contents of $user crontab: (to edit, run # crontab -e)"
+    crontab -l | tee -a $logpath
+
+    printlog "install mode of this script finished. Exit."
+    exit 0;
+fi

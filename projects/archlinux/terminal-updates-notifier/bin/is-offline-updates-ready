@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# How to use this script
+#     bash is-offline-updates-ready
+#     if [ $? -eq 0 ]
+#     then
+#         echo "Updates required."
+#     fi
+
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "Usage:"
+    echo "    NOTE: This script must be run as root."
+    echo "    returns 0 if packages are ready to install"
+    echo "    returns 1 if no new packages are downloaded"
+fi
+
+
+# grep for lines containing an arrow (i.e. contain the format 1.0.0.0 -> 2.0.0.0)
+toUpdate=$(pacman -Qu | grep "\->" | wc -l)
+if [ $toUpdate -gt 0 ]; then
+    if [ $toUpdate -gt 99 ]; then
+        printf "There are \e[31m$toUpdate packages\e[39m to update.\n"
+    else
+        printf "There are $toUpdate packages to update.\n"
+    fi
+    exit 0;
+fi
+
+exit 1;
