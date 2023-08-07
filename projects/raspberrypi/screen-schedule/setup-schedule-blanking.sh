@@ -7,10 +7,10 @@ if ! command -v xset &> /dev/null; then
 fi
 
 # Commands to keep the screen always on
-on_cmd="xset s off && xset -dpms"
+cmd_energy_save="xset s 120"
 
 # Commands to enable screensaver and power-saving mode
-off_cmd="xset +dpms && xset s on"
+cmd_always_on="xset s off"
 
 # Add cron jobs
 
@@ -18,7 +18,7 @@ off_cmd="xset +dpms && xset s on"
 (crontab -l | grep -v 'xset' | crontab -)
 
 # Add the new jobs
-(crontab -l ; echo "0 23 * * * $on_cmd") | crontab -
-(crontab -l ; echo "30 6 * * * $off_cmd") | crontab -
+(crontab -l ; echo "0 23 * * * $cmd_energy_save") | crontab -
+(crontab -l ; echo "30 6 * * * $cmd_always_on") | crontab -
 
 echo "Cron jobs set up successfully!"
