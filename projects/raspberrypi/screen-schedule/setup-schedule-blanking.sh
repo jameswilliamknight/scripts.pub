@@ -10,7 +10,7 @@ fi
 cmd_energy_save="xset s 120"
 
 # Commands to enable screensaver and power-saving mode
-cmd_always_on="xset s off"
+cmd_always_on="xset s reset && xset s off"
 
 # Add cron jobs
 
