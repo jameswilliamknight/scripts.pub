@@ -1,3 +1,4 @@
 # scripts.pub - public scripts
 
-**See:** setting up ubuntu from a single command: https://github.com/jameswilliamknight/scripts.pub/blob/master/Bash/provision/ubuntu/start.md
+- [Bootstrap GitHub](./provision/github-bootstrap.sh) [(Direct Download, right-click + save-as)](https://raw.githubusercontent.com/jameswilliamknight/scripts.pub/master/provision/github-bootstrap.sh)
+  - Needs updating, could use ed25519
