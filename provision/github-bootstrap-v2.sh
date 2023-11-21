@@ -99,6 +99,9 @@ if command -v xdg-open &> /dev/null; then
     fi
 else
     echo "xdg-open not found. Please open https://github.com/settings/keys manually in your browser."
+    echo "Attempting to open with explorer (check for WSL not added)"
+    # TODO: only do this if WSL detected. 
+    explorer.exe https://github.com/settings/keys
 fi
 
 # Set up Git configuration
