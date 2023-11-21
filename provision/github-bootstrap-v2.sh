@@ -22,9 +22,10 @@ computerName=$2
 
 # Detect if the system is Debian-based
 if [[ -f /etc/debian_version ]]; then
+    sudo apt-get update
+
     # Install git if not already installed
     if ! command -v git &> /dev/null; then
-        sudo apt-get update
         sudo apt-get install git -y
     fi
 
